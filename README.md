@@ -4,6 +4,7 @@
 | --------------------- | -------- | ------------------------ |
 | nickname              | string   | null: false              |
 | email                 | string   | null: false,unique: true |
+| encrypted_password    | string   | null: false              |
 | last_name             | string   | null: false              |
 | first_name            | string   | null: false              |
 | last_name_kana        | string   | null: false              |
@@ -12,7 +13,7 @@
 
 ## Associations
 --has_many: items
---has_many: orderitems
+--has_many: order_items
 
 #items table
 
@@ -30,7 +31,7 @@
 
 ## Associations
 --belongs_to: user
---has_one: orderitems
+--has_one: order_items
 
 #delivers table
 | column        | type       | options                       |
@@ -44,14 +45,16 @@
 | item_user     | references | null: false,foreign_key: true |
 
 ## Associations
---belongs_to: orderitems
+--belongs_to: order_items
 
-#orderitems table
+#order_items table
 | column | type       | options                       |
 | ------ | ---------- | ----------------------------- |
 | user   | references | null: false,foreign_key: true |
+| item   | references | null: false,foreign_key: true |
 
 ## Associations
 --has_one: deliver
 --belongs_to: user
+--belongs_to: item
 
