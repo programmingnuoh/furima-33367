@@ -31,7 +31,7 @@
 
 ## Associations
 --belongs_to: user
---has_one: order_items
+--has_one: order_item
 
 #delivers table
 | column        | type       | options                       |
@@ -45,7 +45,7 @@
 | item_user     | references | null: false,foreign_key: true |
 
 ## Associations
---belongs_to: order_items
+--belongs_to: order_item
 
 #order_items table
 | column | type       | options                       |
