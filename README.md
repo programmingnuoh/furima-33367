@@ -1,16 +1,14 @@
 #users table
 
-| column                | type     | options                                           |
-| --------------------- | -------- | ------------------------------------------------- |
-| nickname              | string   | null: false                                       |
-| email                 | string   | null: false                                       |
-| password              | string   | null: false,format:{with:/[a-z\d]{6,}/i}          |
-| password_confirmation | string   | null: false,format:{with:/[a-z\d]{6,}/i}          |
-| last_name             | string   | null: false,format:{with:/\A[ぁ-んァ-ヶ一-龥々]+\z/} |
-| first_name            | string   | null: false,format:{with:/\A[ぁ-んァ-ヶ一-龥々]+\z/} |
-| last_name_kana        | string   | null: false,format:{with:/\A[ァ-ヶ]+\z/}           |
-| first_name_kana       | string   | null: false,format:{with:/\A[ァ-ヶ]+\z/}           |
-| birth_date            | datetime | null: false                                       |
+| column                | type     | options                  |
+| --------------------- | -------- | ------------------------ |
+| nickname              | string   | null: false              |
+| email                 | string   | null: false,unique: true |
+| last_name             | string   | null: false              |
+| first_name            | string   | null: false              |
+| last_name_kana        | string   | null: false              |
+| first_name_kana       | string   | null: false              |
+| birth_date            | datetime | null: false              |
 
 ## Associations
 --has_many: items
@@ -18,18 +16,17 @@
 
 #items table
 
-| column                | type       | options                                           |
-| --------------------- | ---------- | ------------------------------------------------- |
-| image                 | image      | null: false                                       |
-| name                  | string     | null: false                                       |
-| info                  | text       | null: false                                       |
-| category              | string     | null: false                                       |
-| sales_status          | string     | null: false                                       |
-| shipping_fee_status   | string     | null: false                                       |
-| prefecture            | string     | null: false                                       |
-| scheduled_delivery    | integer    | null: false                                       |
-| price                 | integer    | null: false,price >= 300 && price <= 9,999,999    |
-| user_id               | references | null: false,foreign_key: true                     |
+| column                 | type       | options                       |
+| ---------------------- | ---------- | ----------------------------- |
+| name                   | string     | null: false                   |
+| info                   | text       | null: false                   |
+| category_id            | integer    | null: false                   |
+| sales_status_id        | integer    | null: false                   |
+| shipping_fee_status_id | integer    | null: false                   |
+| prefecture_id          | integer    | null: false                   |
+| scheduled_delivery_id  | integer    | null: false                   |
+| price                  | integer    | null: false                   |
+| user                   | references | null: false,foreign_key: true |
 
 ## Associations
 --belongs_to: user
