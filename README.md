@@ -11,7 +11,7 @@
 | birth_date            | datetime | null: false              |
 
 ## Associations
---has_many: items
+--has_many: items, through: item_users
 --has_many: orders
 
 #items table
@@ -29,24 +29,30 @@
 | user                   | references | null: false,foreign_key: true |
 
 ## Associations
---belongs_to: user
+--belongs_to: user, through: item_users
 --has_one: order
 
 #orders table
-| column       | type       | options                                           |
-| ------------ | ---------- | ------------------------------------------------- |
-| token_number | integer    | null: false,format:{with:/\d{16}/}                |
-| token_data   | datetime   | null: false                                       |
-| token_code   | integer    | null: false,format:{with:/\d{3}/}                 |
-| post_code    | integer    | null: false,.gsub(/-/''),format:{with:/\d(7)/}    |
-| prefecture   | string     | null: false                                       |
-| city         | string     | null: false                                       |
-| addresses    | string     | null: false                                       |
-| building     | string     |                                                   |
-| phone_number | integer    | null: false,format:{with:/\d(10,11)/}             |
-| user_id      | references | null: false,foreign_key: true                     |
-| item_id      | references | null: false,foreign_key: true                     |
+| column        | type   | options     |
+| ------------- | ------ | ----------- |
+| post_code     | string | null: false |
+| prefecture_id | string | null: false |
+| city          | string | null: false |
+| addresses     | string | null: false |
+| building      | string |             |
+| phone_number  | string | null: false |
 
 ## Associations
 --belongs_to: user
 --belongs_to: item
+
+#item_users table
+| column | type       | options                       |
+| ------ | ---------- | ----------------------------- |
+| user   | references | null: false,foreign_key: true |
+| item   | references | null: false,foreign_key: true |
+
+## Associations
+--belongs_to: user
+--belongs_to: item
+
