@@ -32,7 +32,7 @@
 --belongs_to: user
 --has_one: orderitems
 
-#deliveries table
+#delivers table
 | column        | type       | options                       |
 | ------------- | ---------- | ----------------------------- |
 | post_code     | string     | null: false                   |
