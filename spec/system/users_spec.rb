@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe "トップページのヘッダーの表示", type: :system do
+RSpec.describe 'トップページのヘッダーの表示', type: :system do
   context 'ログインの有無による表示の違い' do
     it 'ログアウト状態だとログイン／新規登録のボタンがあること' do
       visit root_path
@@ -21,7 +21,7 @@ RSpec.describe "トップページのヘッダーの表示", type: :system do
   end
 end
 
-RSpec.describe "新規登録・ログインについて", type: :system do
+RSpec.describe '新規登録・ログインについて', type: :system do
   before do
     @user = FactoryBot.create(:user)
   end
@@ -38,12 +38,12 @@ RSpec.describe "新規登録・ログインについて", type: :system do
     fill_in 'first-name', with: @user.first_name
     fill_in 'last-name-kana', with: @user.last_name_kana
     fill_in 'first-name-kana', with: @user.first_name_kana
-    select '1930',from: "user[birth_date(1i)]"
-    select '10',from: "user[birth_date(2i)]"
-    select '30',from: "user[birth_date(3i)]"
-    expect{
+    select '1930', from: 'user[birth_date(1i)]'
+    select '10', from: 'user[birth_date(2i)]'
+    select '30', from: 'user[birth_date(3i)]'
+    expect do
       find('input[name="commit"]').click
-    }.to change{User.count}.by(1)
+    end.to change { User.count }.by(1)
     expect(current_path).to eq(root_path)
   end
 
