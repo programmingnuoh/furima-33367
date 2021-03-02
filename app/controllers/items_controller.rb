@@ -13,12 +13,12 @@ class ItemsController < ApplicationController
   end
 
   def create
-    Item.create(item_params)
-    if item.save
-      redirect_to
+    @item = Item.create(item_params)
+    if @item.save
+      redirect_to root_path
     else
-      render
-    end
+      render :new
+    end      
   end
 
   private
