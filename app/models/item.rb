@@ -9,6 +9,7 @@ class Item < ApplicationRecord
     validates :scheduled_delivery_id
     validates :price
   end
+  validates :image, presence: true
 
   belongs_to :user
   has_one :order_item
