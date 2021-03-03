@@ -3,6 +3,7 @@ class Item < ApplicationRecord
     validates :name
     validates :info
     validates :price, numericality:{greater_than_or_equal_to: 300, less_than_or_equal_to: 9999999}, format: {with: /\A[0-9]+\z/ }
+    validates :image
     with_options numericality:{ other_than: 0 } do
       validates :category_id
       validates :sales_status_id
@@ -11,7 +12,6 @@ class Item < ApplicationRecord
       validates :scheduled_delivery_id
     end
   end
-  validates :image, presence: true
 
   belongs_to :user
   has_one :order_item

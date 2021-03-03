@@ -101,6 +101,30 @@ RSpec.describe Item, type: :model do
         @item.valid?
         expect(@item.errors.full_messages).to include("Category must be other than 0")
       end
+
+      it 'sales_status_idで0の値は登録できない' do
+        @item.sales_status_id = 0
+        @item.valid?
+        expect(@item.errors.full_messages).to include("Sales status must be other than 0")
+      end
+
+      it 'shipping_fee_status_idで0の値は登録できない' do
+        @item.shipping_fee_status_id = 0
+        @item.valid?
+        expect(@item.errors.full_messages).to include("Shipping fee status must be other than 0")
+      end
+
+      it 'prefecture_idで0の値は登録できない' do
+        @item.prefecture_id = 0
+        @item.valid?
+        expect(@item.errors.full_messages).to include("Prefecture must be other than 0")
+      end
+
+      it 'scheduled_delivery_idで0の値は登録できない' do
+        @item.scheduled_delivery_id = 0
+        @item.valid?
+        expect(@item.errors.full_messages).to include("Scheduled delivery must be other than 0")
+      end
     end
   end
 end
