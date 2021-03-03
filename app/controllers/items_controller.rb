@@ -1,19 +1,14 @@
 class ItemsController < ApplicationController
   def index
-    @items = Item.all
+    # @items = Item.all
   end
 
   def new
     @item = Item.new
-    @prefecture = Prefecture.all
-    @category = Category.all
-    @sales_status = SalesStatus.all
-    @shipping_fee_status = ShippingFeeStatus.all
-    @scheduled_delivery = ScheduledDelivery.all
   end
 
   def create
-    @item = Item.create(item_params)
+    @item = Item.new(item_params)
     if @item.save
       redirect_to root_path
     else
