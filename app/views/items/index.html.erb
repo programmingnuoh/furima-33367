@@ -124,7 +124,13 @@
   <div class='item-contents'>
     <h2 class='title'>ピックアップカテゴリー</h2>
     <%= link_to '新規投稿商品', "#", class: "subtitle" %>
-    <%= render partial:'item', collection: @items %>
+    <ul class='item-lists'>
+    <% @items.each do |item| %>
+      <li class='list'>
+        <%= render partial:"item", locals: {item:item} %>
+      </li>
+    <% end %>
+    </ul>
   </div>
   <%# /商品一覧 %>
 </div>
