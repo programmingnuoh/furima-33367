@@ -12,7 +12,7 @@ class Order
   end
 
   def save
-    order_item = OrderItem.create(user_id:current_user.id, item_id:item.id)
+    order_item = OrderItem.create(user_id:user_id, item_id:item_id)
     Deliver.create(post_code:post_code, prefecture_id:prefecture_id, city:city, address:address,building:building,phone_number:phone_number, order_item_id:order_item.id)
   end
 
