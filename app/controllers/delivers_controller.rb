@@ -1,4 +1,5 @@
 class DeliversController < ApplicationController
+  before_action :item_find, only: [:index, :create]
 
   def index
     @order = Order.new
@@ -17,6 +18,10 @@ class DeliversController < ApplicationController
 
   private
 
+  def item_find
+    @item = Item.find(params[:item_id])
+  end
+
   def order_params
     params.require(:order).permit(:post_code, :prefecture_id, :city, :address, :building, :phone_number).merge(user_id: current_user.id, item_id: params[:item_id], token:params[:token])
   end  
@@ -24,7 +29,7 @@ class DeliversController < ApplicationController
   def pay_item
     Payjp.api_key = ENV["PAYJP_SECRET_KEY"]
     Payjp::Charge.create(
-      amount: 3000,
+      amount: @item.price,
       card: order_params[:token],
       currency: 'jpy'
     )
