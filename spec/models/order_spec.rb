@@ -60,10 +60,34 @@ RSpec.describe Order, type: :model do
         expect(@order.errors.full_messages).to include("Phone number is invalid")
       end
 
+      it 'phone_numberが12桁以上では登録ができないこと' do
+        @order.phone_number = '000011112222333333'
+        @order.valid?
+        expect(@order.errors.full_messages).to include("Phone number is too long (maximum is 11 characters)")
+      end
+
+      it 'phone_numberが英数字混同では登録できないこと' do
+        @order.phone_number = '0a0aaa00000'
+        @order.valid?
+        expect(@order.errors.full_messages).to include("Phone number is invalid")
+      end
+
       it 'tokenが空だと登録ができないこと' do
         @order.token = nil
         @order.valid?
         expect(@order.errors.full_messages).to include("Token can't be blank")
+      end
+
+      it 'user_idが空だと登録できないこと' do
+        @order.user_id = nil
+        @order.valid?
+        expect(@order.errors.full_messages).to include("User can't be blank")
+      end
+
+      it 'item_idが空だと登録できないこと' do
+        @order.item_id = nil
+        @order.valid?
+        expect(@order.errors.full_messages).to include("Item can't be blank")
       end
     end
   end
