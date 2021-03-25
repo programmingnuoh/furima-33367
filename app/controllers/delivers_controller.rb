@@ -3,6 +3,9 @@ class DeliversController < ApplicationController
 
   def index
     @order = Order.new
+    if @item.order_item.present? || current_user.id == @item.user_id
+      redirect_to root_path
+    end
   end
 
   def create

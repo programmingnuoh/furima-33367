@@ -24,12 +24,8 @@ class ItemsController < ApplicationController
   end
 
   def edit
-    if @item.order_item.item_id.empty?
-      if user_signed_in?
+    if @item.order_item.empty?
         redirect_to root_path
-      else
-        redirect_to new_user_session_path        
-      end  
     end
   end
 
