@@ -1,6 +1,6 @@
 class DeliversController < ApplicationController
   before_action :item_find, only: [:index, :create]
-  before_action :check_present, only[:index, :create]
+  before_action :check_present, only: [:index, :create]
   before_action :authenticate_user!
 
   def index

@@ -51,7 +51,7 @@ class ItemsController < ApplicationController
   end
 
   def item_user_action
-    if current_user.id != @item.user_id || @item.order_item.empty?
+    if current_user.id != @item.user_id || @item.order_item.present?
       redirect_to root_path
     end
   end
