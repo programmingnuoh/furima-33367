@@ -42,7 +42,7 @@
 | addresses     | string     | null: false                   |
 | building      | string     |                               |
 | phone_number  | string     | null: false                   |
-| item_user     | references | null: false,foreign_key: true |
+| order_item     | references | null: false,foreign_key: true |
 
 ## Associations
 --belongs_to: order_item
