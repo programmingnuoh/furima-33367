@@ -1,5 +1,7 @@
 FactoryBot.define do
   factory :order do
+    association :item
+    user { item.user }
     transient do
       addresses { Gimei.address }
     end
@@ -10,7 +12,5 @@ FactoryBot.define do
     building { '青山ハイツ304' }
     phone_number { '00011112222' }
     token { "tok_abcdefghijk0000000000000000" }
-    user_id {1}
-    item_id {1}
   end
 end

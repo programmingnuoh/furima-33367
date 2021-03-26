@@ -1,11 +1,10 @@
 class DeliversController < ApplicationController
   before_action :item_find, only: [:index, :create]
+  before_action :check_present, only[:index, :create]
+  before_action :authenticate_user!
 
   def index
     @order = Order.new
-    if @item.order_item.present? || current_user.id == @item.user_id
-      redirect_to root_path
-    end
   end
 
   def create
@@ -36,5 +35,11 @@ class DeliversController < ApplicationController
       card: order_params[:token],
       currency: 'jpy'
     )
+  end
+
+  def check_present
+    if @item.order_item.present? || current_user.id == @item.user_id
+      redirect_to root_path
+    end    
   end
 end
