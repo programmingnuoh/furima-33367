@@ -1,7 +1,5 @@
 FactoryBot.define do
   factory :order do
-    association :item
-    user { item.user }
     transient do
       addresses { Gimei.address }
     end
