@@ -1,4 +1,4 @@
-lock 'Capistranoのバージョン'
+lock '3.16.0'
 
 # Capistranoのログの表示に利用する
 set :application, 'furima-33367'
