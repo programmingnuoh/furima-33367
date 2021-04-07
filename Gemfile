@@ -64,7 +64,6 @@ gem 'image_processing', '~> 1.2'
 gem 'active_hash', '~> 2.3.0'
 gem 'payjp'
 gem "aws-sdk-s3", require: false
-gem 'mimemagic', "~> 0.3.10"
 
 group :production do
   gem 'unicorn', '5.4.1'
